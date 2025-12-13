@@ -1,0 +1,30 @@
+redis-ha:
+  enabled: false
+
+controller:
+  replicas: 1
+
+server:
+  replicas: 1
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+      nginx.ingress.kubernetes.io/client-body-buffer-size: 50M
+      nginx.ingress.kubernetes.io/proxy-body-size: 50M
+    enabled: true
+    ingressClassName: nginx
+    tls: true
+
+repoServer:
+  replicas: 1
+
+applicationSet:
+  replicas: 1
+
+# ingress
+global:
+  domain: argocd.parcer.com
+
+certificate:
+  enabled: true
+

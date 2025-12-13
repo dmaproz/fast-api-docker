@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: python-app
+spec:
+  rules:
+  - host: python-app.parcer.com
+    http:
+      paths:
+      - path: /app/
+        pathType: Prefix
+        backend:
+          service:
+            name: python-app
+            port:
+              number: 8080
