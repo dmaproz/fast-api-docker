@@ -1,4 +1,5 @@
 import datetime
+import socket
 
 from flask import Flask, request, jsonify
 
@@ -7,7 +8,8 @@ app = Flask(__name__)
 @app.route('/app/v1/details', methods=['GET'])
 def details():
     return jsonify({
-        'data': "hellow world",
+        'message': "We are going forward!",
+        'hostname': socket.gethostname(),
         'time': str(datetime.datetime.now()),
     })
 
