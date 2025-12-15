@@ -23,3 +23,4 @@ jobs:
         with:
           push: true
           tags: dcaroc/fast-api-docker:${GITHUB_SHA::6}
+          
