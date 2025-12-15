@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/app/v1/details', methods=['GET'])
 def details():
     return jsonify({
-        'message': "We are going forward!",
+        'message': "We are going forward! come on",
         'hostname': socket.gethostname(),
         'time': str(datetime.datetime.now()),
     })
@@ -23,4 +23,3 @@ def healthz():
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')
-    

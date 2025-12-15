@@ -22,4 +22,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: dcaroc/fast-api-docker:${GITHUB_SHA::6}
+          tags: dcaroc/fast-api-docker:${{ github.sha }}
