@@ -1,4 +1,4 @@
-name: ci
+name: cicd
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
       - main
 
 jobs:
-  docker:
-    runs-on: self-hosted
+  ci:
+    runs-on: ubuntu-latest
     steps:
       - name: Declare some variables
         shell: bash
@@ -27,3 +27,16 @@ jobs:
         with:
           push: true
           tags: dcaroc/fast-api-docker:${{ env.sha_short }}
+  cd:
+    needs: ci
+    runs-on: self-hosted
+    steps:
+      - name: ArgoCD deployment
+        shell: bash
+        run: |
+          argocd login argocd.parcer.com \
+            --insecure \
+            --grpc-web  \
+            --username ${{ secrets.ARGOCD_USERNAME }}\
+            --password ${{ secrets.ARGOCD_PASSWORD }}
+          argocd app sync python-app
