@@ -2,20 +2,19 @@ replicaCount: 1
 image:
   repository: dcaroc/fast-api-docker
   pullPolicy: IfNotPresent
-  tag: v2
-imagePullSecrets: [ ]
+  tag: 4358af
+imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
 serviceAccount:
   create: false
   automount: true
-  annotations: { }
+  annotations: {}
   name: ""
-podAnnotations: { }
+podAnnotations: {}
 podLabels: {}
-podSecurityContext: { }
-securityContext: { }
+podSecurityContext: {}
+securityContext: {}
 service:
   type: ClusterIP
   port: 5000
@@ -48,8 +47,8 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-volumes: [ ]
-volumeMounts: [ ]
-nodeSelector: { }
-tolerations: [ ]
-affinity: { }
+volumes: []
+volumeMounts: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
