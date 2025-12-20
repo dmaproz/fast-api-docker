@@ -39,7 +39,8 @@ jobs:
         shell: bash
         run: |
           echo ${{needs.ci.outputs.commit_id}}
-          pip3 install yq
+          python -m pip install --upgrade pip
+          pip install yq
           yq -Yi '.image.tag = "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
       - name: Commit change
         uses: EndBug/add-and-commit@v9
