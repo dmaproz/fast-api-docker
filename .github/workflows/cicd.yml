@@ -26,7 +26,7 @@ jobs:
         with:
           push: true
           tags: dcaroc/fast-api-docker:${{ env.sha_short }}
-  output:
+  outputs:
     commit_id: ${{ env.sha_short }}
   cd:
     needs: ci
