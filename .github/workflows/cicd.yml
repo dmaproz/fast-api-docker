@@ -26,10 +26,24 @@ jobs:
         with:
           push: true
           tags: dcaroc/fast-api-docker:${{ env.sha_short }}
+  output:
+    commit_id: ${{ env.sha_short }}
   cd:
     needs: ci
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v3
+      - name: Modify values file
+        shell: bash
+        run: |
+          echo ${{needs.ci.outputs.commit_id}}
+          sudo apt update && sudo apt install pipx
+          pipx install yq
+          yq -Yi '.image.tag = "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
+      - name: Commit change
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "CD key of chart values commit ${{needs.ci.outputs.commit_id}}"
       - name: Install Argo
         shell: bash
         run: |
