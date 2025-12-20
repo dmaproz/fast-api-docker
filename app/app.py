@@ -5,12 +5,13 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/app/v1/details', methods=['GET'])
-def details():
+@app.route('/app/v1/info', methods=['GET'])
+def info():
     return jsonify({
         'message': "We are going forward! Some stuffs extra!......",
         'hostname': socket.gethostname(),
         'time': str(datetime.datetime.now()),
+        'deployed_on': "kubernates"
     })
 
 
