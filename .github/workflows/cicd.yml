@@ -37,8 +37,7 @@ jobs:
         shell: bash
         run: |
           echo ${{needs.ci.outputs.commit_id}}
-          sudo apt update && sudo apt install pipx
-          pipx install yq
+          pip install yq
           yq -Yi '.image.tag = "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
       - name: Commit change
         uses: EndBug/add-and-commit@v9
