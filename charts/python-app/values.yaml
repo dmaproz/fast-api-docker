@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: dcaroc/fast-api-docker
   pullPolicy: IfNotPresent
-  tag: 4358af
+  tag: 7a86a2
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
