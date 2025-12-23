@@ -1,0 +1,12 @@
+site_name: 'python-app'
+site_description: 'Main documentation for the python-app features and framework APIs'
+repo_url: https://github.com/dmaproz/fast-api-docker/
+edit_uri: edit/master/docs
+
+plugins:
+  - techdocs-core
+
+# For sidebar navigation on https://backstage.io/, see `microsite/sidebars.js`
+nav:
+  - Overview:
+      - What is python-app?: 'docs/index.md'
